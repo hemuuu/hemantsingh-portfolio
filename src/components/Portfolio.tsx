@@ -16,8 +16,6 @@ interface SocialLinks {
   instagram: string;
   linkedin: string;
   youtube: string;
-  github: string;
-  twitter: string;
 }
 
 interface PortfolioProps {
@@ -29,9 +27,7 @@ interface PortfolioProps {
 const Portfolio: React.FC<PortfolioProps> = ({ projects: initialProjects, onOffsetChange, socialLinks = {
   instagram: '#',
   linkedin: '#',
-  youtube: '#',
-  github: '#',
-  twitter: '#'
+  youtube: '#'
 } }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
@@ -72,7 +68,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ projects: initialProjects, onOffs
       const now = Date.now();
       setCursorTrail(prev => {
         const newTrail = [...prev, { x: e.clientX, y: e.clientY, time: now }];
-        return newTrail.filter(point => now - point.time < 300);
+        return newTrail.filter(point => now - point.time < 200);
       });
 
       // Handle dragging
